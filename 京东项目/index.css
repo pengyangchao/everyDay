@@ -1,0 +1,35 @@
+/*测试属性*/
+#top,#top_main,#nav,#banner,#main,#foot_box,#footer{
+    border:1px solid #000;
+}
+
+/*通用属性*/
+body{
+    font:12px "microsoft yahei",Arial,Helvetica,sans-serif;
+    color:#666;
+    margin:0;
+    padding:0;
+}
+a{
+    color:#666;
+    text-decoration:none;
+}
+a:hover{
+    color:#ff0700;
+    text-decoration:underline;
+}
+h1,h2,h3,h4,h5,h6,p,ul,ol,dl,dd{
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+.lf{float:left;}
+.rt{float:right;}
+.clear{clear:both;}
+/***********************************/
+/***1、布局***/
+#top,#top_main,#nav,#banner,#main,#foot_box,#footer{
+    /*宽度，元素水平居中对齐*/
+    width:1211px;
+    margin:0 auto;
+}
