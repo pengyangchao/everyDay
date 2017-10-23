@@ -1,6 +1,6 @@
 /*测试属性*/
-#top,#top_main,#nav,#banner,#main,#foot_box,#footer{
-    border:1px solid #000;
+#top_main,#nav,#banner,#main,#foot_box,#footer{
+    /*border:1px solid #000;*/
 }
 
 /*通用属性*/
@@ -28,8 +28,97 @@ h1,h2,h3,h4,h5,h6,p,ul,ol,dl,dd{
 .clear{clear:both;}
 /***********************************/
 /***1、布局***/
-#top,#top_main,#nav,#banner,#main,#foot_box,#footer{
+#top_box,#top_main,#nav,#banner,#main,#foot_box,#footer{
     /*宽度，元素水平居中对齐*/
     width:1211px;
     margin:0 auto;
+}
+
+/*1、页面顶部:top */
+#top{
+    width: 100%;
+    height: 30px;
+    background-color: #f7f7f7;
+    line-height: 30px;
+}
+#top_box img{
+    margin-top: 9px;
+    margin-right: 5px;
+}
+
+#top_box>ul>li{
+    float: left;
+    margin-right: 5px;
+}
+#top_box>ul>li b{
+    border-left:1px solid #ddd;
+
+    margin-right: 5px;
+}
+.vip a{
+    padding-left: 30px;
+    background: url(Images/vip.jpg) no-repeat left center;
+}
+.b-jd a{
+    padding-left: 30px;
+    background: url(Images/dakehu.jpg) no-repeat left center;
+}
+.sj-jd a{
+    padding-left: 18px;
+    background: url(Images/iconlist_2.png) no-repeat -128px -360px;
+    height: 22px;
+    display: inline-block;
+    line-height: 22px;
+}
+.sj-jd a:hover{
+    background-position: -128px -399px;
+}
+.service>a {
+    padding: 0 15px;
+    background: url(Images/jt_down.jpg) no-repeat 65px 10px;
+    display: inline-block;
+    height: 27px;
+    line-height: 27px;
+    border: 1px solid transparent;
+    border-bottom:0;
+}
+.service:hover>a{
+    background: url(Images/jt_up.jpg) no-repeat 65px 10px;
+    border: 1px solid #ddd;
+    border-bottom:0;
+    background-color: #fff;
+}
+
+.service{
+        position: relative;
+}
+.service_sub{
+    border: 1px solid #ddd;
+    background-color: #fff;
+    border-top: 0;
+    position: absolute;
+    left: 6px;
+    top:25px;
+    width: 78px;
+    display: none;
+
+}
+.service_sub li{
+    width:70px;
+    text-align: center;
+}
+li.service:hover .service_sub{
+    display: block;
+}
+
+/*LOGO和搜索框*/
+#top_main{
+
+}
+.search{
+}
+.txtSearch{
+}
+
+#top_main img{
 }
