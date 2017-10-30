@@ -379,9 +379,105 @@ img{
     cursor: pointer;
 }
 
-#slider ul{
+#slider_ad{
 
+    width: 670px;
+    border: 1px solid #ddd;
+    border-top: 0;
+    box-sizing: border-box;
+    height: 160px;
+
+
+}
+
+#slider ul{
     position: absolute;
     bottom: 20px;
     right: 20px;
+}
+/*滑动广告*/
+
+#slider_ad a{
+
+    float: left;
+    width: 25px;
+    height: 35px;
+    margin-top: 62px;
+}
+#slider_ad ul{
+    float: left;
+    /*width: 668px;*/
+}
+#slider_ad ul li{
+    float: left;
+    padding: 10px 0 0 0;
+    width: 205px;
+    text-align: center;
+}
+
+#slider_ad a.left{
+    background: url(Images/index/ad-arraw.png) no-repeat 0 0;
+}
+#slider_ad a.right{
+    background: url(Images/index/ad-arraw.png) no-repeat 0 -35px;
+}
+
+#slider_ad a.left:hover{
+    background: url(Images/index/ad-arraw-hover.png) no-repeat 0 0;
+}
+
+#slider_ad a.right:hover{
+    background: url(Images/index/ad-arraw-hover.png) no-repeat 0 -35px;
+}
+#ad_right {
+    float: right;
+    width: 310px;
+    height: 400px;
+    margin-top: 10px;
+    /*border-bottom: 1px solid #ddd;*/
+    box-sizing: border-box;
+}
+
+
+#jd_new p{
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+
+
+#jd_new div{
+    min-height: 50px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    /*width: 310px;*/
+    box-sizing: border-box;
+    border-top: 2px solid #aaa;
+    padding: 10px 0 ;
+}
+#jd_new ul{
+    padding: 0 10px;
+    width: 134px;
+    line-height: 25px;
+
+}
+
+#jd_new ul.rt{
+    border-left: 1px solid #ddd;
+    width: 133px;
+}
+
+#virtuals{
+    border-top: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    min-height: 100px;
+    margin-top: 10px;
+
+}
+#virtuals ul li{
+    float: left;
+    width: 76.25px;
+    border-right: 1px solid #ddd ;
+    border-bottom: 1px solid #ddd ;
+    min-height: 60px;
 }
