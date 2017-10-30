@@ -186,105 +186,202 @@ li.service:hover .service_sub{
 
 
 /***************3、主导航:nav****************************/
-ul{
-    margin:0;
-    padding:0;
-    list-style:none;
-}
+
 
 #nav{
     /*宽度，高度，背景颜色，该元素水平居中*/
-    width:1121px;
     height:40px;
     background-color:#E64346;
-    margin:0 auto;
 }
-#nav p{
-    margin:0;
-    /*宽度，高度，背景颜色*/
+#nav>p{
+    /*宽度，高度，背景，浮动*/
     width:210px;
     height:40px;
     background:#CD2A2C;
+    float:left;
 }
-#nav p a{
-    /*左浮动，左内边距，高度，行高*/
+#nav>p a{
+    /*左浮动，左内边距，行高*/
     float:left;
     padding-left:15px;
-    height:40px;
     line-height:40px;
-    /*文本颜色，取消下划线*/
+    /*文字大小，颜色，加粗，取消下划线*/
+    font-size:14px;
     color:#fff;
-    text-decoration:none;
     font-weight:bold;
+    text-decoration:none;
 }
-#nav p b{
-    /*右浮动，宽度，高度，背景*/
+#nav>p b{
+    /*右浮动，宽度，高度，背景，位置*/
     float:right;
     width:20px;
     height:20px;
-    background:url(../Images/iconlist_2.png) no-repeat -65px 0;
-    /*通过外边距移动元素位置*/
-    margin-right:10px;
+    background:url(Images/iconlist_2.png) no-repeat -65px 0;
     margin-top:10px;
+    margin-right:10px;
 }
-
-#nav p{float:left;}
-#nav ul{
+#nav>ul li{
     float:left;
 }
-#nav ul li{
-    float:left;
-}
-#nav ul li a{
-    /*浮动，宽度，高度，文本水平居中，垂直居中(行高)，颜色，加粗，取消下划线*/
+#nav>ul li a{
+    /*浮动，宽度，高度，行高，水平居中*/
     float:left;
     width:100px;
     height:40px;
-    text-align:center;
     line-height:40px;
+    text-align:center;
+    /*文字：颜色，加粗，取消下划线，大小*/
     color:#fff;
     font-weight:bold;
     text-decoration:none;
+    font-size:14px;
 }
-#nav ul a:hover{
+#nav>ul li a:hover{
     background:#BD2A2C;
 }
 
-#content{
-    width:990px;
-    margin:0 auto;
-    min-height:100px;
-}
+/************banner部分*****************/
 
-/*子分类信息*/
-#cate_box{
-    /*宽度，高度，边框*/
+#banner .cate_box{
+    float: left;
     width:210px;
-    height:400px;
-    border:2px solid #CD2A2C;
-    border-top:0;
-    box-sizing:border-box;
-    /*上内边距*/
-    padding-top:5px;
+    height: 410px;
+    border: 2px solid #cd2a2c;
+    border-top: 0;
     background-color: #fafafa;
-}
+    box-sizing: border-box;
+    padding-top: 5px;
 
-#cate_box li a{
+}
+#banner .cate_box>li>a{
     /*文字大小，颜色，取消下划线*/
     font-size:14px;
     color:#333;
     text-decoration:none;
-}
-#cate_box li{
-    /*宽度，内边距(上下左)*/
+    /*从 li 中移植过来的属性*/
+    /*宽度，上下左内边距，上边框透明，下边框白色*/
+    display:block;
     width:196px;
     padding:5px 0 5px 10px;
     box-sizing:border-box;
-    /*下边框*/
-    border-bottom:1px solid #fff;
     border-top:1px solid transparent;
+    border-bottom:1px solid #fff;
 }
-#cate_box li:hover{
-    border-bottom:1px solid #ddd;
-    border-top:1px solid #ddd;
+#banner .cate_box>li>a:hover{
+    border-color: #ddd;
+    background-color: #fff;
+    position: relative;
+    z-index: 20;
+}
+
+#banner .cate_box{
+    position: relative;
+}
+
+#sub_cate_box{
+    width: 710px;
+    min-height: 200px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding:5px;
+    position: absolute;
+    top: 0;
+    left: 195px;
+    z-index: 10;
+}
+
+#sub_cate_box div.close{
+
+    width:20px;
+    height:20px;
+    background-color: #555;
+    border-radius: 50%;
+    color: #fff;
+    text-align: center;
+    line-height: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+
+}
+
+
+#sub_cate_box div.content{
+    float: left;
+    width:500px;
+}
+
+#sub_cate_box div.content ul{
+
+    border-top:1px solid #ddd ;
+    overflow: hidden;
+    padding:5px 0;
+
+}
+#sub_cate_box div.content li.title{
+    border: 0;
+    width: 60px;
+    text-align: right;
+}
+#sub_cate_box div.content li.title a{
+    font-weight: bold;
+    color: #e4393c;
+    text-decoration: underline;
+}
+#sub_cate_box div.content ul li{
+
+    border-left:1px solid #ddd ;
+    font-size: 14px;
+    float: left;
+    padding:5px;
+}
+
+#sub_cate_box{
+    display: none;
+}
+
+#slider_box{
+    float: left;
+    /*border: 1px solid red;*/
+    margin: 10px 10px 0 10px;
+    height: 400px;
+    width: 670px;
+    box-sizing: border-box;
+}
+
+
+
+img{
+    vertical-align: bottom;
+
+}
+
+#slider{
+    position:relative ;
+}
+
+#slider li{
+
+   width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    float: left;
+    background-color: #3e3e3e;
+    border-radius: 50%;
+    margin-right: 10px;
+    color: #fff;
+
+}
+#slider li:hover{
+    cursor: pointer;
+}
+
+#slider ul{
+
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
 }
