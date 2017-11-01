@@ -14,6 +14,11 @@ a{
     color:#666;
     text-decoration:none;
 }
+
+.pl10{
+    padding-left: 10px;
+}
+
 a:hover{
     color:#ff0700;
     text-decoration:underline;
@@ -470,14 +475,65 @@ img{
 #virtuals{
     border-top: 1px solid #ddd;
     border-left: 1px solid #ddd;
-    min-height: 100px;
+    min-height: 166px;
     margin-top: 10px;
 
 }
 #virtuals ul li{
     float: left;
-    width: 76.25px;
+    width: 77.25px;
     border-right: 1px solid #ddd ;
     border-bottom: 1px solid #ddd ;
-    min-height: 60px;
+    min-height: 83px;
+    box-sizing: border-box;
+}
+
+#virtuals a{
+    display: block;
+    text-align: center;
+}
+#virtuals a b{
+    width:42px;
+    height:29px;
+    display: block;
+    background: url(Images/index/virtuals-20140606.png) no-repeat;
+    margin: 10px auto;
+}
+
+#virtuals a i{
+    display: block;
+    width:0;
+    height:0;
+    border: 5px solid transparent;
+    border-top: 3px solid #ddd;
+    margin: 4px auto;
+}
+
+
+/*四：主题内容*/
+
+#main >p {
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 10px 0;
+}
+#main >p>i{
+    font-size: 14px;
+    font-weight: normal;
+}
+
+/*8张图片*/
+
+#main li{
+    float: left;
+    width: 295px;
+    height: 190px;
+    /*background-image: url(Images/index/show_01.jpg);*/
+}
+
+.mr10{
+    margin-right: 10px;
+}
+.mt10{
+    margin-top: 10px;
 }
