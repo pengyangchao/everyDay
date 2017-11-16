@@ -524,16 +524,46 @@ img{
 
 /*8张图片*/
 
-#main li{
+#main>ul>li{
     float: left;
     width: 295px;
     height: 190px;
-    /*background-image: url(Images/index/show_01.jpg);*/
-}
+    background-image: url(Images/index/show_04.png);
 
+    transition: background 300ms linear;
+}
+#main>ul>li:hover{
+    background-position: -10px 0;
+}
 .mr10{
     margin-right: 10px;
 }
 .mt10{
     margin-top: 10px;
+}
+#main>ul>li>b{
+    display: block;
+    width:45%;
+    height:100%;
+    background-color:#fff;
+    opacity: 0.7;
+}
+
+
+/*遮罩层文本*/
+#main>ul>li{
+    /*做相对定位配合文本做绝对定位*/
+    position: relative;
+}
+#main>ul>li>div{
+    position: absolute;
+    top: 30px;
+    left:20px;
+}
+#main>ul>li>div>h3{
+    font-weight: normal;
+}
+#main>ul>li>div>span{
+    background-color:#e4393c ;
+    color: #fff;
 }
