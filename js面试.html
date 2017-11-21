@@ -34,6 +34,47 @@
 
     //作用域链和原型链
 
+
+
+    //继承
+
+    //共用飞行方法
+    function Fleyer(name,speed) {
+        this.name=name;
+        this.speed=speed;
+    }
+//    原型函数
+    Fleyer.prototype.fly=function () {
+        console.log(
+            this.name+"以时速"+this.speed+"飞行");
+    };
+
+    function Bee(name,speed,award) {
+        //借用父类中构造函数的飞行方法，防止父类方法中的属性泄露;
+        Fleyer.call(this,name,speed);
+//        Fleyer.apply(this,arguments);
+        this.award=award;
+    }
+
+    Bee.prototype.getAward=function () {
+        console.log('击落'+this.name+'获得奖励'+this.award);
+    };
+
+    //   Bee.prototype=Fleyer.prototype;
+//    继承
+    Object.setPrototypeOf(Bee.prototype,Fleyer.prototype);
+
+    var bee1=new Bee('bee1',11,100);
+    console.dir(bee1);
+    bee1.fly();
+    bee1.getAward();
+
+
+    //call 和apply
+    //都是强行调用一个本来无法调用的函数，并且临时替换其中的this对象
+//    Fleyer.call(this,name,speed);
+//    Fleyer.apply(this,arguments);
+
 </script>
 
 <body>
