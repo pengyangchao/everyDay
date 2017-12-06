@@ -1,0 +1,22 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+		"SublimeCodeIntel"
+	],
+	"installed_packages":
+	[
+		"A File Icon",
+		"AdvancedNewFile",
+		"Boxy Theme",
+		"BracketHighlighter",
+		"ConvertToUTF8",
+		"Emmet",
+		"Git",
+		"Package Control",
+		"Sass",
+		"SideBarEnhancements",
+		"SublimeLinter",
+		"SublimeLinter-jshint"
+	]
+}
