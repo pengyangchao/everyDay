@@ -31,8 +31,13 @@ var preview={
     LIWIDTH:62,
     $ul:null,
     $mask:null,
+    MSIZE:175,
+    SSIZE:350,
+    MAX:0,
+    $lg:null,
     init()
     {
+        this.MAX=this.SSIZE-this.MSIZE;
         this.$ul=$('#icon_list');
         $('#preview>h1>a').click(function(e)
         {
@@ -59,6 +64,7 @@ var preview={
 
             }.bind(this))
 
+
         this.$ul.on('mouseenter','li>img',function()
         {
             var src = $(this).attr('src');
@@ -67,9 +73,29 @@ var preview={
             $('#mImg').attr('src',src); 
         })
         this.$mask=$('#mask');
+        this.$lg=$('#largeDiv');
         $('#superMask').hover(function()
         {
             this.$mask.toggle();
+            var src=$('#mImg').attr('src');
+            var i=src.lastIndexOf('.');
+            src=src.slice(0,i-1)+'l'+src.slice(i);
+            this.$lg.toggle().css('backgroundImage',('url('+src+')'));
+        }.bind(this)).mousemove(function(e)
+        {
+
+            var y=e.offsetY,x=e.offsetX;
+            var top=y-this.MSIZE/2,left=x-this.MSIZE/2;
+            if(top<0) top=0;
+            else if(top>this.MAX) top = this.MAX;
+
+            if(left<0) left=0;
+            else if(left>this.MAX) left = this.MAX;
+
+            this.$mask.css({top,left});
+
+            this.$lg.css('backgroundPosition',`${-16/7*left}px ${-16/7*top}px`)
+
         }.bind(this))
     }
 };
