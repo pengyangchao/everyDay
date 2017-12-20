@@ -27,15 +27,10 @@ var slider={
 			this.autoMove();
 		}.bind(this));
 
-		me.$ulImgs.on('mouseover','li>img',function(e){
-			var target=$(e.target);
-			var i=target.index('#imgs img');
-			me.move=i;
-			me.$ulImgs.css({left:-me.move*me.IMGWIDTH});
-			me.autoHover();
-		});
+		
 	},
 	initView(){
+		var me = this;
 		for (var i = 0,htmlImgs='',htmlIndex=''; i < imgs.length; i++) {
 			htmlImgs+=`<li><img src="${imgs[i]['img']}" /></li>`;
 			htmlIndex+=`<li>${i+1}</li>`;
@@ -45,17 +40,29 @@ var slider={
 		}
 	this.$ulImgs.append(this.$ulImgs.children(":first").clone());
 	this.$ulIdex.children(":first").addClass("hover");
+	
+	me.$ulImgs.on('mouseover','li>img',function(e){
+			var target=$(e.target);
+			var i=target.index('#imgs img');
+			console.log(i);
+			me.move=i;
+			me.$ulImgs.css({left:-me.move*me.IMGWIDTH});
+			me.autoHover();
+		});
 	},
 	autoMove(){
+		
 		this.move++;
 		this.$ulImgs.delay('slow').animate({left:-this.IMGWIDTH*this.move},1000,function(){
-			if(this.move==imgs.length){
+			if(this.move>=imgs.length){
 				this.move=0;
 				this.$ulImgs.css('left',0);
 			}
 			this.autoHover();
 			this.autoMove();
 		}.bind(this));
+
+		
 	},
 	autoHover(){
 		this.$ulIdex.children().eq(this.move).addClass('hover').siblings().removeClass('hover');
