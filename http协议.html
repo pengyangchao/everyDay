@@ -302,7 +302,7 @@ trace   追踪请求路径；
 options 选项，保留以后使用；
 </code></pre>
 
-<h3>响应消息中的响应状态码——五类</h3>
+<h4>响应消息中的响应状态码——五类</h4>
 <pre><code>1xx 提示性信息 
 2xx 成功的响应
 3xx 需要客户的重定向
@@ -310,8 +310,17 @@ options 选项，保留以后使用；
 5xx 服务的运行错误
 </code></pre>
 
-
-
-
+<h4>根据HTTP协议的知识进行网站访问优化 有哪些方案？</h4>
+<pre><code>(1)域名解析
+    尽可能减少域名解析次数——减少跨站外部资源的引用
+(2)创建连接
+    努力减少连接创建次数——启用持久连接避免重复连接
+(3)发送请求
+    尽力减少请求次数——合理设置缓存、资源合并
+(4)等待响应
+    提高服务器端运行速度——提高数据运算及查询速度
+(5)接收响应
+    尽可能减小响应数据长度——启用压缩5xx 服务的运行错误
+</code></pre>
 <!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
 </body></html>
