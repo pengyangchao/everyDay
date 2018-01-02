@@ -108,6 +108,21 @@
     //希望只有该类型的子对象才能够调用的方法
     var arr1=[];
     arr1.indexOf();
+
+    //預解釋
+    //不管條件成不成立都會進行預結算
+    console.log("num" in window);
+    if(!("num" in window)){
+        var num =12;
+    }
+    console.log(num);
+    //当变量已经存在，js不会进行重复定义
+    function a(argument) {
+        console.log(1);
+    }
+    a();
+    
+    var a=1;
 </script>
 
 <body>
