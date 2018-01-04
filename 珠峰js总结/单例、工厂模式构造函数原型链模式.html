@@ -59,6 +59,11 @@
 	var ret = hasPubProperty(bbb,'name');
 	console.log(ret); //false
 
+	//原型链
+	//1.每个函数数据类型（函数、类）都有一个对象叫做protoype;
+	//2.浏览器会给这个对象prototype添加一个属性construct（构造函数），值是这个函数或者类本身；
+	//3.每个对象数据类型（实例、对象、prototype）也天生自带一个属性__proto__,属性值是当前实例所属类的原型（prototype）；
+
 </script>
 </body>
 </html>
