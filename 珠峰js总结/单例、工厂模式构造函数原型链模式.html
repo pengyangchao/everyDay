@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script>
+	//单例模式 : 主要解决了在统一作用域下对属性进行分组；
+	//->person1或者person1叫做“命名空间”；
+	var person1={
+		name:'aaa'
+	}
+	var person1={
+		name:'bbb'
+	}
+
+	//工厂模式：函数的封装，低耦合高内聚；
+
+	//构造函数：目的是为了创建一个自定义类，并且创建这个类的实例；
+
+	//->工厂模式,构造函数的区别？
+	function createPerson(name,age) 
+	{
+		// var obj={};
+		// obj.name=name;
+		// obj.age=age;
+		this.name=name;
+		this.age=age;
+		this.write=function(){
+			console.log(this.name);
+		}
+		// return obj;
+	}
+
+	//1.执行的时候
+	//var aaa=createPerson(aaa,18); 工厂模式
+	//var bbb = new createPerson(bbb,18);构造函数 bbb就是createPerson类的一个实例
+
+	//2.在函数执行代码的时候
+	//相同：和普通函数一样，按照顺序执行，（形参定义-》预解释-》赋值）；
+	//不同：不用自己去 var 一个对象 浏览器会自动帮我们生成一个对象数据类型的值（当前类的实例）并且进行赋值（属性名和属性值）；然后返回对象；
+
+	//构造函数拓展
+	//1.new createPerson()时没有参数，可以省略();
+	//2.构造函数里面属性前我this一定指当前实例，函数里面的this就要看执行的时候'.'前面的是谁；
+	var bbb = new createPerson('bbb',18)
+	bbb.write(); //bbb
+	var fn = bbb.write; fn(); //undefined;
+	//3. return 一个引用数据类型的值会覆盖浏览器默认返回的对象;
+	//4.检查一个实例是否属于这个类 instanceof
+	//typeof 有局限性，不能区分数组和对象
+	//5.in 判断属性是否属于这个对象；
+	//hasOwnProperty是否为私有属性；
+	console.log(bbb.hasOwnProperty('name')); 
+	//判断属性是否为公用属性
+	function hasPubProperty(obj,attr){
+		return attr in obj && !obj.hasOwnProperty(attr);
+	}
+	var ret = hasPubProperty(bbb,'name');
+	console.log(ret); //false
+
+</script>
+</body>
+</html>
