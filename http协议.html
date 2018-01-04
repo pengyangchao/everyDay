@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <!-- saved from url=(0073)file:///C:/Users/Administrator/AppData/Local/Temp/MarkdownPadPreview.html -->
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>MarkdownPad Document</title>
+  <title>MarkdownPad Document</title>
 
-<style type="text/css">
-/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
-/* Author: Nicolas Hery - http://nicolashery.com */
-/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
-/* Source: https://github.com/nicolahery/markdownpad-github */
+  <style type="text/css">
+  /* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+  /* Author: Nicolas Hery - http://nicolashery.com */
+  /* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+  /* Source: https://github.com/nicolahery/markdownpad-github */
 
 /* RESET
 =============================================================================*/
@@ -213,21 +213,21 @@ pre code, pre tt {
 }
 
 kbd {
-    -moz-border-bottom-colors: none;
-    -moz-border-left-colors: none;
-    -moz-border-right-colors: none;
-    -moz-border-top-colors: none;
-    background-color: #DDDDDD;
-    background-image: linear-gradient(#F1F1F1, #DDDDDD);
-    background-repeat: repeat-x;
-    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
-    border-image: none;
-    border-radius: 2px 2px 2px 2px;
-    border-style: solid;
-    border-width: 1px;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    line-height: 10px;
-    padding: 1px 4px;
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  background-color: #DDDDDD;
+  background-image: linear-gradient(#F1F1F1, #DDDDDD);
+  background-repeat: repeat-x;
+  border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+  border-image: none;
+  border-radius: 2px 2px 2px 2px;
+  border-style: solid;
+  border-width: 1px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  line-height: 10px;
+  padding: 1px 4px;
 }
 
 /* QUOTES
@@ -291,36 +291,44 @@ img {
 </style>
 </head>
 <body>
-<h4>常见的HTTP请求方法有哪些？各表示客户端的何种意图？</h4>
-<pre><code>get     表示客户的想获得服务器上的资源；
-post    表示客户端想传递数据给服务器；
-put     表示客户端想放置文件到服务器上；restful
-delete  表示客户端想删除服务器上指定的文件；restful
-head    表示客户的想获得服务器上的资源的响应头部；
-connect 连接测试；
-trace   追踪请求路径；
-options 选项，保留以后使用；
-</code></pre>
+  <h4>常见的HTTP请求方法有哪些？各表示客户端的何种意图？</h4>
+  <pre><code>get     表示客户的想获得服务器上的资源；
+    post    表示客户端想传递数据给服务器；
+    put     表示客户端想放置文件到服务器上；restful
+    delete  表示客户端想删除服务器上指定的文件；restful
+    head    表示客户的想获得服务器上的资源的响应头部；
+    connect 连接测试；
+    trace   追踪请求路径；
+    options 选项，保留以后使用；
+  </code></pre>
 
-<h4>响应消息中的响应状态码——五类</h4>
-<pre><code>1xx 提示性信息 
-2xx 成功的响应
-3xx 需要客户的重定向
-4xx 客户的请求错误
-5xx 服务的运行错误
-</code></pre>
+  <h4>响应消息中的响应状态码——五类</h4>
+  <pre><code>1xx 提示性信息 
+    2xx 成功的响应
+    3xx 需要客户的重定向
+    4xx 客户的请求错误
+    5xx 服务的运行错误
+  </code></pre>
 
-<h4>根据HTTP协议的知识进行网站访问优化 有哪些方案？</h4>
-<pre><code>(1)域名解析
+  <h4>根据HTTP协议的知识进行网站访问优化 有哪些方案？</h4>
+  <pre><code>(1)域名解析
     尽可能减少域名解析次数——减少跨站外部资源的引用
-(2)创建连接
+    (2)创建连接
     努力减少连接创建次数——启用持久连接避免重复连接
-(3)发送请求
+    (3)发送请求
     尽力减少请求次数——合理设置缓存、资源合并
-(4)等待响应
+    (4)等待响应
     提高服务器端运行速度——提高数据运算及查询速度
-(5)接收响应
+    (5)接收响应
     尽可能减小响应数据长度——启用压缩5xx 服务的运行错误
-</code></pre>
-<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
+  </code></pre>
+  <h4>跨域</h4>
+  <pre><code>(1)jsonp
+    (2)代理
+    (3)PHP端修改header（XHR2方式）
+    在php接口脚本中加入以下两句即可：
+    header('Access-Control-Allow-Origin:*');//允许所有来源访问
+    header('Access-Control-Allow-Method:POST,GET');//允许访问的方式
+  </code></pre>
+  <!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
 </body></html>
