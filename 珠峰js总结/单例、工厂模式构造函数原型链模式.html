@@ -4,7 +4,7 @@
 	<title></title>
 </head>
 <body>
-<script>
+	<script>
 	//单例模式 : 主要解决了在统一作用域下对属性进行分组；
 	//->person1或者person1叫做“命名空间”；
 	var person1={
@@ -84,13 +84,44 @@
 	ary=[1,2,2,3,1,5,6,8,1,6,8];
 	ary.myUnique().reverse();
 	console.log(ary);
-	ary.myUnique().pop().reverse();// ary.myUnique(...).pop(...).reverse is not a function  pop返回的不是数组；
+	//ary.myUnique().pop().reverse();// ary.myUnique(...).pop(...).reverse is not a function  pop返回的不是数组；
 
 	// 函数的三种角色
 	//1.普通的函数，会有一个私有的作用域，（闭包） 形参的定义-》预解释-》赋值；
 	//2.“类”， 会有prototype 。。。。。
 	//3.普通的对象，就像Obj={}，会有__proto__指向Function.prototype;
 
-</script>
+	//求数组最大值
+
+	var arr=[5,2,36,44,543,1,4,12,3];
+
+	// 1.先进行排序
+	arr.sort(function(a,b){
+		return a-b;
+	});
+	console.log(arr[0],arr[arr.length-1]);
+
+	// 2.
+	var min = Math.min.apply(null,arr)
+	var max = Math.max.apply(null,arr);
+	console.log(eval(min),eval(max));
+
+   	// 3.假设法
+   	function myFn(arr)
+   	{
+   		var min = arr[0];
+   		var max = arr[0];
+   		for(var i=0; i<arr.length;i++)
+   		{
+   			var cur = arr[i];
+   			arr[i]<min?min=arr[i]:null;
+   			arr[i]>max?max=arr[i]:null;
+   		}
+   		console.log(min,max);
+   	}
+   	myFn(arr);
+
+
+   </script>
 </body>
 </html>
