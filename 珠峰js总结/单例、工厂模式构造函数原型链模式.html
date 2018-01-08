@@ -121,6 +121,13 @@
    	}
    	myFn(arr);
 
+   	//类数组有函数里面的arguments、
+   	// 元素 -> document.getElementByTatNmae();
+   	// 节点 -> document.getElementByNmae();
+   	// 类数组和数组一样拥有索引和长度，但是不能直接调用Array原型上的方法——sort、slice；
+   	// 用call 用类数组替换call方法里面的this [].prototype.slice.call(类数组);
+
+
 
    </script>
 </body>
