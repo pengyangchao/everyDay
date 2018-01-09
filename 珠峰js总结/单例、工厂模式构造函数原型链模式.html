@@ -5,6 +5,12 @@
 </head>
 <body>
 	<script>
+
+
+	//js优化方法
+	// 1.手动销毁变量
+	// 2.减少回流（重排）
+
 	//单例模式 : 主要解决了在统一作用域下对属性进行分组；
 	//->person1或者person1叫做“命名空间”；
 	var person1={
@@ -130,15 +136,14 @@
 
 
    	// arguments是兼容所有浏览器的，但是元素集合和节点集合IE8以前是不兼容的
-   	//用try catch 方法让类数组变数组兼容所有浏览器
    	var utils{
+   	//用try catch 方法让类数组变数组兼容所有浏览器
    		listToArray:function(){
    			try{
    				// 标准
    				var arr= Array.prototype.slice.call(likeArray);
    			}
-   			catch(e)
-   			{
+   			catch(e){
    				// 非标准
    				var arr=[];
    				for(var i = 0;i<likeArray.length;i++){
@@ -147,7 +152,22 @@
    			}
    			return arr;
    		}
+
+   		//ie6、7下没有JSON对象，json字符串转化为json对象兼容方法；
+   		JsonParse:function(jsonString){
+   			return "JSON" in windows?JSON.parse(jsonString):eval("("+jsonString+")");
+   		}
    	}
+
+
+   		//数据绑定三种方法
+   		// 1.动态生成元素追加到页面中 弊端：每生成一次会引起一次回流；
+   		// 2.字符串拼接 弊端：如若追加的页面不是空白的 会对直接的内容产生影响；
+   		// 3.文档碎片
+
+
+   		//回流（重排reflow）：页面中HTML结构发生变化，浏览器会重新进行计算，并重新渲染；
+   		//重绘：某个元素的样式发生变化，只需要重新渲染当前元素即可；
 
 
    </script>
