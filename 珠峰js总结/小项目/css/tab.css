@@ -1,0 +1,38 @@
+@charset "utf-8";
+*{
+	margin: 0;
+	padding: 0;
+	font-family: "微软雅黑";
+	font-size: 14px;
+	-webkit-user-select:none; 
+}
+.box{
+	margin: 20px auto;
+	padding: 20px;
+	width:400px;
+	border: 1px solid #008000;
+	border-radius:10px;
+	box-shadow: 3px 3px 10px red;
+}
+#tab thead {
+	background-color: #008000;
+}
+#tab thead tr{
+	height: 35px;
+}
+#tab thead tr th{
+	width: 100px;
+}
+#tab tbody tr{
+	height: 35px;
+}
+#tab tbody tr.bg{
+	background: lightskyblue; 
+}
+#tab thead tr th.cursor{
+	cursor: pointer;
+}
+#tab tbody tr td{
+	width: 100px;
+	text-align: center;
+}
