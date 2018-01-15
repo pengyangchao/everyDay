@@ -41,7 +41,7 @@
 	//1.执行的时候
 	//var aaa=createPerson(aaa,18); 工厂模式
 	//var bbb = new createPerson(bbb,18);构造函数 bbb就是createPerson类的一个实例
-
+           
 	//2.在函数执行代码的时候
 	//相同：和普通函数一样，按照顺序执行，（形参定义-》预解释-》赋值）；
 	//不同：不用自己去 var 一个对象 浏览器会自动帮我们生成一个对象数据类型的值（当前类的实例）并且进行赋值（属性名和属性值）；然后返回对象；
@@ -110,7 +110,7 @@
 	// 2.
 	var min = Math.min.apply(null,arr)
 	var max = Math.max.apply(null,arr);
-	console.log(eval(min),eval(max));
+	console.log(min,max);
 
    	// 3.假设法
    	function myFn(arr)
