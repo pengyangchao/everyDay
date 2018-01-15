@@ -1,6 +1,6 @@
 var utils={
    	//用try catch 方法让类数组变数组兼容所有浏览器
-   		listToArray:function(){
+   		listToArray:function(likeArray){
    			try{
    				// 标准
    				var arr= Array.prototype.slice.call(likeArray);
