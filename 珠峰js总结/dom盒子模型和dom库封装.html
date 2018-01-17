@@ -22,8 +22,51 @@
 	// ->如果有溢出：
 	// ->scrollWidth/scrollHeight 真实高度加上上填充距离；
 	// 获取到的值是约等于的，因为：设置的overflow='hiden' 对最终结果是有影响的，不同浏览器之间也是不同的；
-	
+
 	// ->scrollLeft/scrollTop 滚动条卷去的高度
+
+	// 以上属性都是整数，流浪器获取结果的时候会在原来的数值上进行了四舍五入；
+
+	// 关于操作浏览器本身的盒子模型信息
+	// ->clientWidth/clientHeight 是当前浏览器可视窗口（一屏幕）的高度和宽度；
+	// ->scrollWidth/scrollHeight 当前页面的真实高度/宽度（所有屏加起来,是一个约等于值）；
+	// 我们不管哪些属性，为了考虑不用浏览器的兼容性，都需要这样来写
+	// document.documentElement[attr] ||document.body[attr]; documentElement要写在前面
+	// 例如
+	// [获取]
+	document.documentElement.clientWidth || document.body.clientWidth;
+	// [设置]
+	document.documentElement.scrollTop=0;
+	document.body.scrollTop=0;
+
+
+	function win(attr,value) {
+		// 根据参数不同来实现不同的功能
+		// 类似于重载
+		if(typeof value ==undefined)
+			return document.documentElement[attr] || document.body[attr];
+
+		document.documentElement[attr]=value;
+		document.body[attr]=value;
+	}
+
+	// 获取元素的具体信息
+	// getComputedStyle(box,null).height box的内容高度；ie6-8不兼容
+	// box.current.height;ie6-8下兼容
+	
+	// 获取具体样式的兼容方法
+	// curEle:[object] 当前要操作元素的对象；
+	// attr:[string] 获取样式属性的名称；
+	function getCss(curEle,attr){
+		var val=null;
+		try{
+			val=getComputedStyle(curEle,null)[attr] box
+		}catch(e){
+			val=curEle.current[attr];
+		}
+		return val;
+	}
+
 
 
 
