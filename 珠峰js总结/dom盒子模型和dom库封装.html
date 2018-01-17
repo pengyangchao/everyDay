@@ -121,6 +121,33 @@
 		return reg.test(val)?parseFloat(val):val;
 	}
 
+	//获取元素偏移量
+	// parentNode 父亲节点 HTML层级关系中上一级的元素
+	// offsetParent 父级参照物 和HTML层级没有关系 是最顶级元素，一般都是body；
+
+	// offsetLeft 左偏移 当前元素（外边框）距离父级元素的距离（内边框）；
+
+	// jquery的offset方法，获取当前元素的偏移量，父级元素都是body；
+	function offset(curEle){
+		var totalLeft=null,totalTop=null,par=curEle.parentNode;
+		totalLeft+=curEle.offsetLeft;
+		totalTop+=curEle.offsetTop;
+		while(par){
+
+			totalLeft+=par.offsetLeft;
+			totalTop+=par.offsetTop;
+
+			// ie8本身是加上边框的，所以如果是ie要忽略下面的代码
+			if(navigator.userAgent.indexof("MISE 8.0")==-1){
+				totalLeft+=par.clientLeft;
+				totalTop+=par.clientTop;
+			}
+			par=par.parentNode;
+		}
+
+		return {left:totalLeft,top:totalTop};
+	}
+
 </script>
 </body>
 </html>

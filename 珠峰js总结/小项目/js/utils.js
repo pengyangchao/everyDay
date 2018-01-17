@@ -1,6 +1,6 @@
 var utils={
    	//用try catch 方法让类数组变数组兼容所有浏览器
-     listToArray:function(likeArray){
+    listToArray:function(likeArray){
       try{
    				// 标准
    				var arr= Array.prototype.slice.call(likeArray);
@@ -42,4 +42,24 @@ var utils={
          return reg.test(val)?parseFloat(val):val;
       },
 
-   }
+      // jquery的offset方法，获取当前元素的偏移量，父级元素都是body；
+      offset:function(curEle){
+         var totalLeft=null,totalTop=null,par=curEle.parentNode;
+         totalLeft+=curEle.offsetLeft;
+         totalTop+=curEle.offsetTop;
+         while(par){
+
+            totalLeft+=par.offsetLeft;
+            totalTop+=par.offsetTop;
+
+         // ie8本身是加上边框的，所以如果是ie要忽略下面的代码
+         if(navigator.userAgent.indexof("MISE 8.0")==-1){
+            totalLeft+=par.clientLeft;
+            totalTop+=par.clientTop;
+         }
+         par=par.parentNode;
+      }
+
+      return {left:totalLeft,top:totalTop};
+   },
+}

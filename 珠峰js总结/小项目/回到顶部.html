@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+		font-size: 14px;
+		font-family: "微软雅黑";
+	}
+	html, body{
+		height: 500%;
+		width:100%;
+		background: #11c900;
+		background: -webkit-linear-gradient(top,#11c900,lightblue,lightcoral,lightcyan,lightgreen,lightpink,lightsalmon);
+	}
+	#toTop{
+		display: block;
+		width: 50px;
+		height: 50px;
+		background: red;
+		line-height: 50px;
+		border-radius: 50%;
+		color: #fff;
+		position: fixed;
+		bottom: 50px;
+		text-align: center;
+		right: 50px;
+		opacity: 0.5;
+		cursor: pointer;
+	}
+</style>
+<body>
+
+	<div id="toTop" onclick="backTop()">go</div>
+
+
+<script type="text/javascript">
+	function win(attr,value) {
+		// 根据参数不同来实现不同的功能
+		// 类似于重载
+		if(typeof value ==undefined)
+			return document.documentElement[attr] || document.body[attr];
+
+		document.documentElement[attr]=value;
+		document.body[attr]=value;
+	}
+
+
+	function backTop(){
+		//总时长 
+		//总距离
+		//步时
+		//速度
+		win("scrollTop",0);
+	}
+
+
+</script>
+</body>
+</html>
