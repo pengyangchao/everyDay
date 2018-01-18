@@ -24,7 +24,7 @@ var utils={
          var val=null; var reg=null;
 
          if('getComputedStyle' in window){
-            val=getComputedStyle(curEle,null)[attr] box
+            val=getComputedStyle(curEle,null)[attr];
          }else{
          //ie6-8不支持opacity 只支持滤镜；
          if(attr=='opacity'){
