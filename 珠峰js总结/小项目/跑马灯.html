@@ -3,89 +3,100 @@
 <head>
 	<title>跑马灯</title>
 	<style type="text/css">
-		*{
-			margin: 0;
-			padding: 0;
-			font-family: "微软雅黑";
-			font-size: 14px
-		}
-		#box{
-			width: 800px;
-			height: 35px;
-			white-space: nowrap;
-			margin: 50px auto;
-			background: lightgreen;
-			border: 1px solid pink;
-			
-		}
-		#wrap{
-			line-height: 35px;
-			overflow: hidden;
-		}
-		#wrap div{
-			display: inline-block;
-		}
-		#wrap span{
-			font-size: 16px;
-			color: #e4393c;
-		}
+	*{
+		margin: 0;
+		padding: 0;
+		font-family: "微软雅黑";
+		font-size: 14px
+	}
+	#box{
+		width: 800px;
+		height: 35px;
+		white-space: nowrap;
+		margin: 50px auto;
+		background: lightgreen;
+		border: 1px solid pink;
+		
+	}
+	#wrap{
+		line-height: 35px;
+		overflow: hidden;
+	}
+	#wrap div{
+		display: inline-block;
+	}
+	#wrap span{
+		font-size: 16px;
+		color: #e4393c;
+	}
 
-	</style>
+</style>
 </head>
 <body>
 	<div id="box">
 
 		<div id="wrap">
 			<div id="conbegin"><span>通知：</span>
-			/原型链//3.每个对象数据类型（实例、对象、prototype）也天生自带一个属性__proto__,属性值是当前实例所属类的原型（prototype）；
-		</div>
-		<div id="endbegin"><span>通知：</span>
-			/原型链//3.每个对象数据类型（实例、对象、prototype）也天生自带一个属性__proto__,属性值是当前实例所属类的原型（prototype）；
-		</div>
+				/原型链//3.每个对象数据类型（实例、对象、prototype）也天生自带一个属性__proto__,属性值是当前实例所属类的原型（prototype）；
+			</div>
+			<div id="endbegin"><span>通知：</span>
+				/原型链//3.每个对象数据类型（实例、对象、prototype）也天生自带一个属性__proto__,属性值是当前实例所属类的原型（prototype）；
+			</div>
 		</div>
 		
 	</div>	
 
 	<script type="text/javascript">
-		var box=document.getElementById('box');
-		var wrap=document.getElementById('wrap');
-		var conbegin=document.getElementById('conbegin');
-		setInterval(function(){
+		~function(){
+			var box=document.getElementById('box');
+			var wrap=document.getElementById('wrap');
+			var conbegin=document.getElementById('conbegin');
+			var timer = setInterval(move,10);
 
-			wrap.scrollLeft++;
-
-			var nextLeft=wrap.scrollLeft;
-
-			var conbegin_width=getCss(conbegin,'width');
-
-			if(nextLeft>=conbegin_width){
-				wrap.scrollLeft=0;
+			box.onmouseenter = function (){
+				window.clearInterval(timer);
 			}
 
-		},10);
+			box.onmouseout = function (){
+				timer = setInterval(move,10);
+			}
+
+			function move(){
+
+				wrap.scrollLeft++;
+
+				var nextLeft=wrap.scrollLeft;
+
+				var conbegin_width=getCss(conbegin,'width');
+
+				if(nextLeft>=conbegin_width){
+					wrap.scrollLeft=0;
+				}
+			}
+		}();
 
 
 		function getCss(curEle,attr){
-         var val=null; var reg=null;
+			var val=null; var reg=null;
 
-         if('getComputedStyle' in window){
-            val=getComputedStyle(curEle,null)[attr];
-         }else{
+			if('getComputedStyle' in window){
+				val=getComputedStyle(curEle,null)[attr];
+			}else{
          //ie6-8不支持opacity 只支持滤镜；
          if(attr=='opacity'){
 
-            val=curEle.currentStyle["filter"];
-            reg=/^alpha\(opacity=(\d+(?:\.\d+)?)\)$/i;
-            val=reg.test(val)?reg.exec(val)[1]/100:1;
+         	val=curEle.currentStyle["filter"];
+         	reg=/^alpha\(opacity=(\d+(?:\.\d+)?)\)$/i;
+         	val=reg.test(val)?reg.exec(val)[1]/100:1;
 
          }else{
-            val=curEle.currentStyle[attr];
+         	val=curEle.currentStyle[attr];
          }
-      }
+     }
          //如果是px pt rem em 去单位计算；
          reg=/^(-?\d+(\.\d+)?)(px|pt|rem|em)$/i;
          return reg.test(val)?parseFloat(val):val;
-      }
-	</script>
+     }
+ </script>
 </body>
 </html>
