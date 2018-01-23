@@ -3,28 +3,53 @@
 var utils=(function(){
    var flag='getComputedStyle' in window;
 
-   // 类数组变数组兼容所有浏览器
-   function listToArray(likeArray){
-      if(flag){
-            var arr= Array.prototype.slice.call(likeArray);
-      }else{
-       // 非标准
-         var arr=[];
-         for(var i = 0;i<likeArray.length;i++){
-            arr[arr.length]=likeArray[i];
+   return{
+      //用try catch 方法让类数组变数组兼容所有浏览器
+    listToArray:function(likeArray){
+      try{
+               // 标准
+               var arr= Array.prototype.slice.call(likeArray);
+            }
+            catch(e){
+               // 非标准
+               var arr=[];
+               for(var i = 0;i<likeArray.length;i++){
+                  arr[arr.length]=likeArray[i];
+               }
+            }
+            return arr;
+         },
+
+      //ie6、7下没有JSON对象，json字符串转化为json对象兼容方法；
+      jsonParse:function(jsonString){
+         return "JSON" in window ? JSON.parse(jsonString) : eval("("+jsonString+")");
+      },
+
+      getCss:function(curEle,attr){
+         var val=null; var reg=null;
+
+         if(flag){
+            val=getComputedStyle(curEle,null)[attr];
+         }else{
+         //ie6-8不支持opacity 只支持滤镜；
+         if(attr=='opacity'){
+
+            val=curEle.currentStyle["filter"];
+            reg=/^alpha\(opacity=(\d+(?:\.\d+)?)\)$/i;
+            val=reg.test(val)?reg.exec(val)[1]/100:1;
+
+         }else{
+            val=curEle.currentStyle[attr];
          }
       }
-         return arr;
-   }
+         //如果是px pt rem em 去单位计算；
+         reg=/^(-?\d+(\.\d+)?)(px|pt|rem|em)$/i;
+         return reg.test(val)?parseFloat(val):val;
+      },
 
-   //ie6、7下没有JSON对象，json字符串转化为json对象兼容方法；
-   function jsonParse(jsonString){
-      return "JSON" in window ? JSON.parse(jsonString) : eval("("+jsonString+")");
-   }
-
-   // jquery的offset方法，获取当前元素的偏移量，父级元素都是body；
-   function offset(){
-      var totalLeft=null,totalTop=null,par=curEle.parentNode;
+      // jquery的offset方法，获取当前元素的偏移量，父级元素都是body；
+      offset:function(curEle){
+         var totalLeft=null,totalTop=null,par=curEle.parentNode;
          totalLeft+=curEle.offsetLeft;
          totalTop+=curEle.offsetTop;
 
@@ -46,32 +71,9 @@ var utils=(function(){
       }
 
       return {left:totalLeft,top:totalTop};
-   }
-
-   function getCss(curEle,attr){
-      var val=null; var reg=null;
-
-         if(flag){
-            val=getComputedStyle(curEle,null)[attr];
-         }else{
-         //ie6-8不支持opacity 只支持滤镜；
-         if(attr=='opacity'){
-
-            val=curEle.currentStyle["filter"];
-            reg=/^alpha\(opacity=(\d+(?:\.\d+)?)\)$/i;
-            val=reg.test(val)?reg.exec(val)[1]/100:1;
-
-         }else{
-            val=curEle.currentStyle[attr];
-         }
-      }
-         //如果是px pt rem em 去单位计算；
-         reg=/^(-?\d+(\.\d+)?)(px|pt|rem|em)$/i;
-         return reg.test(val)?parseFloat(val):val;
-   }
-
-   function win(attr,value){
-      // 根据参数不同来实现不同的功能
+   },
+      win:function(attr,value) {
+         // 根据参数不同来实现不同的功能
          // 类似于重载
          if(typeof value ==='string'){
             return document.documentElement[attr] || document.body[attr];
@@ -79,13 +81,13 @@ var utils=(function(){
 
          document.documentElement[attr]=value;
          document.body[attr]=value;
-   }
+      },
 
-   //curEle [元素对象]
-   // tagNmae [string] 标签名称 
-   //return [array] curEle下的字元素 如果tagNmae不为空，则进行二次筛选
-   function children(curEle,tagNmae){
-      var arr  =[];
+      //curEle [元素对象]
+      // tagNmae [string] 标签名称 
+      //return [array] curEle下的字元素 如果tagNmae不为空，则进行二次筛选
+      children:function (curEle,tagNmae){
+         var arr  =[];
 
          if(/MISE (6|7|8)/i.test(navigator.userAgent)) {
             var nodeList=curEle.childNodes;
@@ -112,20 +114,6 @@ var utils=(function(){
          }
          
          return arr; 
-   }
-
-   return{
-
-      listToArray:listToArray,
-
-      jsonParse:jsonParse,
-
-      getCss:getCss,
-
-      offset:offset,
-
-      win:win,
-      
-      children:children,
+      },
    }
 })();
