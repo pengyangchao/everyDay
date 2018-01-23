@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<script type="text/javascript">
+	<script type="text/javascript">
 	// 盒子模型常用的属性
 	// 1.client系列
 	// ->clientWidth/clientHeight 内容的高度/宽度 加上填充的距离（不包括内容溢出）；
@@ -138,7 +138,7 @@
 			totalTop+=par.offsetTop;
 
 			// ie8本身是加上边框的，所以如果是ie要忽略下面的代码
-			if(navigator.userAgent.indexof("MISE 8.0")==-1){
+			if(navigator.userAgent.indexOf("MISE 8.0")==-1){
 				totalLeft+=par.clientLeft;
 				totalTop+=par.clientTop;
 			}
@@ -170,7 +170,7 @@
 	// cloneNode(true/false)
 	// replaceChild
 	// get/set/removeAttribute	
- 
+
 	//dom盒子模型；
 
 
@@ -199,7 +199,38 @@
 	// setCss
 	// setGroupCss
 
+	//curEle [元素对象]
+	// tagNmae [string] 标签名称 
+	//return [array] curEle下的字元素 如果tagNmae不为空，则进行二次筛选
+	function children(curEle,tagNmae){
+		var arr	=[];
 
+		if(/MISE (6|7|8)/i.test(navigator.userAgent)) {
+			var nodeList=curEle.childNodes;
+			for (var i=0;i<nodeList.length;i++){
+				var curNode=nodeList[i];
+				if(curNode.nodeType===1){
+					arr[arr.length]=curNode;
+				}
+			}
+		} else {
+			arr=Array.prototype.slice.call(curEle.children);
+		}
+
+		if (typeof tagNmae=='string') {
+			var tagNmaes=[];
+			for(var k=0;k<arr.length;k++){
+				var kCurNode=arr[k];
+				if(kCurNode.nodeName.toLowerCase()===tagNmae.toLowerCase()){
+					tagNmaes[tagNmaes.length]=kCurNode;
+				}
+			}
+			arr=null;
+			return tagNmaes;
+		}
+		
+		return arr; 
+	}
 
 </script>
 </body>
