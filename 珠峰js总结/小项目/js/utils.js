@@ -1,6 +1,6 @@
 var utils={
    	//用try catch 方法让类数组变数组兼容所有浏览器
-    listToArray:function(likeArray){
+     listToArray:function(likeArray){
       try{
    				// 标准
    				var arr= Array.prototype.slice.call(likeArray);
@@ -47,19 +47,32 @@ var utils={
          var totalLeft=null,totalTop=null,par=curEle.parentNode;
          totalLeft+=curEle.offsetLeft;
          totalTop+=curEle.offsetTop;
+
          while(par){
 
-            totalLeft+=par.offsetLeft;
-            totalTop+=par.offsetTop;
+
+               totalLeft+=par.offsetLeft;
+               totalTop+=par.offsetTop;
+            
 
          // ie8本身是加上边框的，所以如果是ie要忽略下面的代码
-         if(navigator.userAgent.indexof("MISE 8.0")==-1){
-            totalLeft+=par.clientLeft;
-            totalTop+=par.clientTop;
-         }
-         par=par.parentNode;
+               if(par.clientLeft!="undefined"&&par.clientTop!='undefined'){
+                  totalLeft+=par.clientLeft;
+                  totalTop+=par.clientTop;
+            }
+
+            par=par.offsetParent;
+
       }
 
       return {left:totalLeft,top:totalTop};
    },
+      win:function(attr,value) {
+         // 根据参数不同来实现不同的功能
+         // 类似于重载
+            return document.documentElement[attr] || document.body[attr];
+
+         document.documentElement[attr]=value;
+         document.body[attr]=value;
+      },
 }
