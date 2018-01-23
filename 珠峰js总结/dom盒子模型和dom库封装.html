@@ -148,6 +148,59 @@
 		return {left:totalLeft,top:totalTop};
 	}
 
+	//context.getElemengtsByClassName(classNmae) ie6~8不兼容;
+	// document.getElemengtsByName();在IE浏览器下只对表单元素的name起作用；
+
+
+	// 节点和节点的关系（标准浏览器中会把空格和换行当做文本节点处理）；
+	// childNodes
+	// children ie6-8获取的结果和标准浏览器结果不一致；
+	// parentNode
+	// previousSibling/previousElementsibling
+	// nextSibling/nextElementSibling
+	// lastChild/lastElementChild
+	// firstChild/firstElementChild
+
+
+	// 关于dom的增删改查
+	// createElement
+	// document.createDocumentFragment()
+	// appendChild
+	// insertBefore
+	// cloneNode(true/false)
+	// replaceChild
+	// get/set/removeAttribute	
+ 
+	//dom盒子模型；
+
+
+	// 以下方法和jquery一样 
+	// function children(){}
+
+	// getElemengtsByClassName
+	// prev
+	// next
+	// prevAll
+	// nextAll
+	// sibling 
+	// siblings
+	// firstChild
+	// lastChild
+	// index 获取当前元素索引
+
+	// prepend和appendChild 对应 增加到某一容器的开头
+	// insertAfter和  insertBefore	增加到容器中某元素的后面
+
+	// addClass
+	// removeClass
+
+	// jquery->CSS()
+	// getCss
+	// setCss
+	// setGroupCss
+
+
+
 </script>
 </body>
 </html>
