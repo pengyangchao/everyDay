@@ -114,6 +114,91 @@ var utils=(function(){
          return arr; 
    }
 
+   function prev(curEle){
+      if(flag){
+         return curEle.previousElementSibling;
+      }else{
+         var par=curEle.previousSibling;
+         while(par && par.nodeType !==1){
+            par = par.previousSibling;
+         }
+         return par;
+      }
+   }
+   function next(curEle){
+      if(flag){
+         return curEle.nextElementSibling;
+      }else{
+         var next=curEle.nextSibling;
+         while(next && next.nodeType !==1){
+            next = next.nextSibling;
+         }
+         return next;
+      }
+   }
+
+   /*function prevAll(curEle){
+      var arr=[],par=null;
+      if(flag){
+         par=curEle.previousElementSibling;
+         while(par){
+            arr[arr.length]=par;
+            par=par.previousElementSibling;
+         }else{
+            par=curEle.previousSibling;
+            while(par && par.nodeType !==1){
+            arr[arr.length]=par;
+            par=par.previousSibling;
+         }
+      }
+      return arr
+   }*/
+
+   function prevAll(curEle){
+      var arr=[];
+      var par=this.prev(curEle);
+      while(par){
+         arr.unshift(par);
+         par=this.prev(par);
+      }
+      return arr;
+   }
+
+   function nextAll(curEle){
+      var arr=[];
+      var next=this.next(curEle);
+      while(next){
+         arr.push(next);
+         next=this.next(next);
+      }
+      return next;
+   }
+
+   function sibling(curEle){
+      var arr=[];
+      var prev = this.prev(curEle);
+      var next = this.next(curEle);
+      prev?arr.push(prev):null;
+      next?arr.push(next):null;
+      return arr;
+   } 
+   function sibings(curEle){
+      return this.prevAll(curEle).concat(this.nextAll(curEle));
+   }
+
+   function index(curEle){
+      return this.prevAll(curEle).length;
+   }
+
+   function firstChild(curEle){
+      var chs = this.children(curEle);
+      return chs.length>0?chs[0]:null;
+   }
+   function lastChild(curEle){
+      var chs = this.children(curEle);
+      return chs.length>0?chs[chs.length-1]:null;
+   }
+
    return{
 
       listToArray:listToArray,
@@ -127,5 +212,24 @@ var utils=(function(){
       win:win,
       
       children:children,
+
+      prev:prev,
+
+      next:next,
+
+      prevAll:prevAll,
+
+      nextAll:nextAll,
+
+      sibling:sibling,
+
+      index:index,
+
+      siblings:sibling,
+
+      firstChild:firstChild,
+
+      lastChild:lastChild,
+
    }
 })();
