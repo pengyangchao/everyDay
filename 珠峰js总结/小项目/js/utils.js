@@ -199,6 +199,31 @@ var utils=(function(){
       return chs.length>0?chs[chs.length-1]:null;
    }
 
+   function append(newEle,container){
+      container.appendChild(newEle);
+   }
+
+   function prepend(newEle,container){
+      var firstChild = this.firstChild(container);
+      if(firstChild){
+         container.insertBefore(newEle,firstChild);
+         return;
+      }
+      container.appendChild(newEle);
+   }
+
+   function insertBefore(newEle,oldELe){
+      oldELe.parentNode.insertBefore(newEle,oldELe);
+   }
+   function insertAfter(newEle,oldELe){
+      var next = this.next(oldELe);
+      if(next){
+         oldELe.parentNode.insertBefore(newEle,next);
+         return;
+      }
+      oldELe.parentNode.appendChild(newEle);
+   }
+
    return{
 
       listToArray:listToArray,
@@ -230,6 +255,14 @@ var utils=(function(){
       firstChild:firstChild,
 
       lastChild:lastChild,
+
+      append:append,
+
+      prepend:prepend,
+
+      insertBefore:insertBefore,
+
+      insertAfter:insertAfter,
 
    }
 })();
