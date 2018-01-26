@@ -224,6 +224,21 @@ var utils=(function(){
       oldELe.parentNode.appendChild(newEle);
    }
 
+
+   function addClass(curEle,className){
+      var arr = className.split(/ +/g);
+      for (var i = 0;i<arr.length;i++){
+         if(!this.hasClass(curEle,className)){
+            curEle.className.=" "+arr[i];
+         }
+      }
+   }
+
+   function hasClass(curEle,className){
+     var reg = new RegExp("(/^| +)"+className+"( |$/)");
+     return reg.test(curEle.className);
+   }
+
    return{
 
       listToArray:listToArray,
