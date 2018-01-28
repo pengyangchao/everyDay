@@ -234,9 +234,48 @@ var utils=(function(){
       }
    }
 
+   function removeClass(curEle,className){
+      var arr = className.split(/ +/g);
+      for (var i = 0;i<arr.length;i++){
+         if(!this.hasClass(curEle,className)){
+            var reg = new RegExp("(/^| +/)"+className+"( +|$)","g");
+            curEle.className=curEle.className.replace(reg," ");
+         }
+   }
+
    function hasClass(curEle,className){
      var reg = new RegExp("(/^| +)"+className+"( |$/)");
      return reg.test(curEle.className);
+   }
+
+   function getElementsByClass(strName,context){
+      context = context || document;
+      if(flag){
+        return this.listToArray(context.getElementsByClass(strName));
+      }
+
+      var arr=[];
+         var sriNameArr = sriName.replace(/^ +| +$/g,"").split(/ +/g);
+
+         var nodeList=context.getElementsByTagName("*");
+
+         for(var i = 0; i<nodeList.length;i++){
+            var curNode=nodeList[i];
+            var isOk=true;
+            for(var k=0;k<sriNameArr.length;k++){
+               var reg =  new RegExp("(^| +)"+sriNameArr[k]+"( +|$)");
+
+
+               if(!reg.test(curNode.className)){
+                  isOk=false;
+                  break;
+               }
+            }
+            if(isOk==true){
+               arr.push(curNode);
+            }
+         }
+         return arr;
    }
 
    return{
@@ -278,6 +317,14 @@ var utils=(function(){
       insertBefore:insertBefore,
 
       insertAfter:insertAfter,
+
+      addClass:addClass,
+
+      removeClass:removeClass,
+
+      hasClass:hasClass,
+
+      getElementsByClass:getElementsByClass,
 
    }
 })();
