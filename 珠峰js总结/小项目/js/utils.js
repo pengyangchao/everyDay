@@ -109,7 +109,7 @@ var utils=(function(){
             }
             arr=null;
             return tagNmaes;
-         }
+         } 
          
          return arr; 
    }
@@ -229,7 +229,7 @@ var utils=(function(){
       var arr = className.split(/ +/g);
       for (var i = 0;i<arr.length;i++){
          if(!this.hasClass(curEle,className)){
-            curEle.className.=" "+arr[i];
+            curEle.className+= " "+arr[i];
          }
       }
    }
@@ -241,6 +241,7 @@ var utils=(function(){
             var reg = new RegExp("(/^| +/)"+className+"( +|$)","g");
             curEle.className=curEle.className.replace(reg," ");
          }
+      }
    }
 
    function hasClass(curEle,className){
@@ -278,13 +279,60 @@ var utils=(function(){
          return arr;
    }
 
+   function setCss(curEle,attr,value){
+      if(attr=='float'){
+         curEle['style']['cssFloat']=value;
+         curEle['style']['styleCss']=value;
+         return;
+      }
+      if(attr=='opacity'){
+         curEle['style']['opacity']=value;
+         curEle['style']['filter']="alpha(opacity="+value*100+")";
+         return;
+      }
+
+      var reg = new RegExp("/(width|height|top|bottom|left|right|((margin|padding)(Top|Bottom|Left|Right)?))/");
+
+      if(reg.test(attr)){
+         if(!isNaN(value)){
+            value+="px";
+         }
+      }
+         curEle['style'][attr]=value;
+   }
+
+   function setGroupCss(curEle,options){
+      options=options||0;
+      if(options.toString()!=="[object object]"){
+         return;
+      }
+
+      for(key in options){
+         this.setCss(curEle,key,options[key]);
+      }
+   }
+
+   function css(curEle){
+      var argTwo = arguments[1];
+      if(typeof argTwo = "string"){
+         if(typeof !=="undefined"){
+            return getCss.aplly(this,arguments);
+         }
+         setCss.aplly(this,arguments);
+      }
+      argTwo=argTwo|0;
+         if(argTwo.toString()=="[object object]"){
+            setGroupCss.aplly(this,arguments);
+         }
+   }
+
    return{
 
       listToArray:listToArray,
 
       jsonParse:jsonParse,
 
-      getCss:getCss,
+      // getCss:getCss,
 
       offset:offset,
 
@@ -326,5 +374,10 @@ var utils=(function(){
 
       getElementsByClass:getElementsByClass,
 
+      // setCss:setCss,
+
+      // setGroupCss:setGroupCss,
+
+      css:css,
    }
-})();
+})(); 
