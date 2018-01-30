@@ -50,36 +50,36 @@
 
 	<div class="box">
 		<ul>
-			<li class="select">选项一</li>
+			<li>选项一</li>
 			<li>选项二</li>
 			<li>选项三</li>
 			<li>选项四</li>
 		</ul>
-		<div class="select">内容1</div>
+		<div>内容1</div>
 		<div>内容2</div>
 		<div>内容3</div>
 		<div>内容4</div>
 	</div>
 	<div class="box">
 		<ul>
-			<li class="select">选项一</li>
+			<li>选项一</li>
 			<li>选项二</li>
 			<li>选项三</li>
 			<li>选项四</li>
 		</ul>
-		<div class="select">内容1</div>
+		<div>内容1</div>
 		<div>内容2</div>
 		<div>内容3</div>
 		<div>内容4</div>
 	</div>
 	<div class="box">
 		<ul>
-			<li class="select">选项一</li>
+			<li>选项一</li>
 			<li>选项二</li>
 			<li>选项三</li>
 			<li>选项四</li>
 		</ul>
-		<div class="select">内容1</div>
+		<div>内容1</div>
 		<div>内容2</div>
 		<div>内容3</div>
 		<div>内容4</div>
@@ -87,33 +87,12 @@
 
 
 	<script type="text/javascript" src="js/utils.js"></script>
+	<script type="text/javascript" src="js/tabFair.js"></script>
 	<script>
-		~function(){
-			function tabChange(container){
-				var tabfirst=utils.firstChild(container),oLi=utils.children(tabfirst);
-				for (var i=0 ; i<oLi.length; i++){
-					var curLi= oLi[i];
-					curLi.index=i;
-					curLi.onclick=function(){
-						var siblings= utils.siblings(this);
-						var oDivs=utils.nextAll(tabfirst);
-						for(var i = 0;i<siblings.length;i++){
-							utils.removeClass(siblings[i],'select');
-							utils.removeClass(oDivs[siblings[i].index],'select');
-						}
-						utils.addClass(this,'select');
-						utils.addClass(oDivs[this.index],'select');
-					}
-				}
-			}
-			window.tabChange=tabChange;
-		}();
-		
 		var boxs=utils.getElementsByClass('box');
 		for(var i=0;i<boxs.length;i++){
-			tabChange(boxs[i]);
+			tabChange(boxs[i],i);
 		}
-
 	</script>
 </body>
 </html>
