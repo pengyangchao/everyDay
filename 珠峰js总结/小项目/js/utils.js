@@ -171,7 +171,7 @@ var utils=(function(){
          arr.push(next);
          next=this.next(next);
       }
-      return next;
+      return arr;
    }
 
    function sibling(curEle){
@@ -182,7 +182,7 @@ var utils=(function(){
       next?arr.push(next):null;
       return arr;
    } 
-   function sibings(curEle){
+   function siblings(curEle){
       return this.prevAll(curEle).concat(this.nextAll(curEle));
    }
 
@@ -237,22 +237,22 @@ var utils=(function(){
    function removeClass(curEle,className){
       var arr = className.split(/ +/g);
       for (var i = 0;i<arr.length;i++){
-         if(!this.hasClass(curEle,className)){
-            var reg = new RegExp("(/^| +/)"+className+"( +|$)","g");
+         if(this.hasClass(curEle,className)){
+            var reg = new RegExp("(^| +)"+className+"( +|$)","g");
             curEle.className=curEle.className.replace(reg," ");
          }
       }
    }
 
    function hasClass(curEle,className){
-     var reg = new RegExp("(/^| +)"+className+"( |$/)");
+     var reg = new RegExp("(^| +)"+className+"( +|$)");
      return reg.test(curEle.className);
    }
 
    function getElementsByClass(strName,context){
       context = context || document;
       if(flag){
-        return this.listToArray(context.getElementsByClass(strName));
+        return this.listToArray(context.getElementsByClassName(strName));
       }
 
       var arr=[];
@@ -314,8 +314,8 @@ var utils=(function(){
 
    function css(curEle){
       var argTwo = arguments[1];
-      if(typeof argTwo = "string"){
-         if(typeof !=="undefined"){
+      if(typeof argTwo == "string"){
+         if(typeof arguments[2]!=="undefined"){
             return getCss.aplly(this,arguments);
          }
          setCss.aplly(this,arguments);
@@ -352,7 +352,7 @@ var utils=(function(){
 
       index:index,
 
-      siblings:sibling,
+      siblings:siblings,
 
       firstChild:firstChild,
 
