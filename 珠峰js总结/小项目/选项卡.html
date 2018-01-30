@@ -89,10 +89,16 @@
 	<script type="text/javascript" src="js/utils.js"></script>
 	<script type="text/javascript" src="js/tabFair.js"></script>
 	<script>
+		
 		var boxs=utils.getElementsByClass('box');
-		for(var i=0;i<boxs.length;i++){
-			tabChange(boxs[i],i);
-		}
+		// for(var i=0;i<boxs.length;i++){
+		// 	tabChange(boxs[i],i);
+		// }
+
+		var box1=new constructorTabChange(boxs[0],0);
+		var box2=new constructorTabChange(boxs[1],1);
+		var box3=new constructorTabChange(boxs[2],2);
+
 	</script>
 </body>
 </html>
