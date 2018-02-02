@@ -30,13 +30,11 @@
 	<script>
 		var box=utils.getElementsByClass("box")[0],rightBtn=document.getElementById("right"),leftBtn=document.getElementById("left");
 		var max=utils.win("clientWidth")-box.offsetWidth;
-		var timer=null;
 		function move(target) {
-
 			_move();
 
 			function _move(){
-				clearTimeout(timer);
+				clearTimeout(box.timer);
 				var curLeft=utils.css(box,"left");
 				var step=5;
 				if(target>curLeft){
@@ -44,19 +42,19 @@
 
 					if(curLeft>max-step){
 						utils.css(box,"left",max)
-						clearTimeout(timer);
+						clearTimeout(box.timer);
 						return;
 					}
 				}else{
 					if(curLeft<=0){
 						utils.css(box,"left",0)
-						clearTimeout(timer);
+						clearTimeout(box.timer);
 						return;
 					}
 					curLeft-=step;
 				}
 				utils.css(box,"left",curLeft)
-				timer=setTimeout(function(){
+				box.timer=setTimeout(function(){
 					_move();
 				});
 			}
