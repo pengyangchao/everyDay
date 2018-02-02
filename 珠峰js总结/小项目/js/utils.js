@@ -291,7 +291,7 @@ var utils=(function(){
          return;
       }
 
-      var reg = new RegExp("/(width|height|top|bottom|left|right|((margin|padding)(Top|Bottom|Left|Right)?))/");
+      var reg = new RegExp("(width|height|top|bottom|left|right|((margin|padding)(Top|Bottom|Left|Right)?))");
 
       if(reg.test(attr)){
          if(!isNaN(value)){
@@ -314,15 +314,15 @@ var utils=(function(){
 
    function css(curEle){
       var argTwo = arguments[1];
-      if(typeof argTwo == "string"){
-         if(typeof arguments[2]!=="undefined"){
-            return getCss.aplly(this,arguments);
+      if(typeof argTwo === "string"){
+         if(typeof arguments[2]=="undefined"){
+            return getCss.apply(this,arguments);
          }
-         setCss.aplly(this,arguments);
+         setCss.apply(this,arguments);
       }
       argTwo=argTwo|0;
          if(argTwo.toString()=="[object object]"){
-            setGroupCss.aplly(this,arguments);
+            setGroupCss.apply(this,arguments);
          }
    }
 
@@ -374,7 +374,7 @@ var utils=(function(){
 
       getElementsByClass:getElementsByClass,
 
-      // setCss:setCss,
+      setCss:setCss,
 
       // setGroupCss:setGroupCss,
 

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	*{
+		padding: 0;
+		margin: 0;
+		font-size: 14px;
+		font-family: "微软雅黑";
+	}
+	.box{
+		width: 100px;
+		height: 100px;
+		background-color: orange;
+		position: relative;
+		top: 0;
+		left: 500px;
+	}
+</style>
+</head>
+<body>
+	<div class="box"> 
+	</div>
+
+	<button id="left" class="">向左</button>
+	<button id="right" class="">向右</button>
+
+	<script type="text/javascript" src="js/utils.js"></script>
+	<script>
+		var box=utils.getElementsByClass("box")[0],rightBtn=document.getElementById("right"),leftBtn=document.getElementById("left");
+		var max=utils.win("clientWidth")-box.offsetWidth;
+		var timer=null;
+		function move(target) {
+
+			_move();
+
+			function _move(){
+				clearTimeout(timer);
+				var curLeft=utils.css(box,"left");
+				var step=5;
+				if(target>curLeft){
+					curLeft+=step;
+
+					if(curLeft>max-step){
+						utils.css(box,"left",max)
+						clearTimeout(timer);
+						return;
+					}
+				}else{
+					if(curLeft<=0){
+						utils.css(box,"left",0)
+						clearTimeout(timer);
+						return;
+					}
+					curLeft-=step;
+				}
+				utils.css(box,"left",curLeft)
+				timer=setTimeout(function(){
+					_move();
+				});
+			}
+		}
+		
+
+		leftBtn.onclick=function(){
+			move(0);
+		}
+
+		rightBtn.onclick=function(){
+			move(max);
+		}
+
+
+	</script>
+</body>
+</html>
