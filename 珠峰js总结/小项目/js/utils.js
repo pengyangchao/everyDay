@@ -23,7 +23,7 @@ var utils=(function(){
    }
 
    // jquery的offset方法，获取当前元素的偏移量，父级元素都是body；
-   function offset(){
+   function offset(curEle){
       var totalLeft=null,totalTop=null,par=curEle.parentNode;
          totalLeft+=curEle.offsetLeft;
          totalTop+=curEle.offsetTop;
@@ -73,7 +73,7 @@ var utils=(function(){
    function win(attr,value){
       // 根据参数不同来实现不同的功能
          // 类似于重载
-         if(typeof value ==='string'){
+         if(typeof value !=='string'){
             return document.documentElement[attr] || document.body[attr];
          }
 
