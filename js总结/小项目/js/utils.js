@@ -302,12 +302,11 @@ var utils=(function(){
    }
 
    function setGroupCss(curEle,options){
-      options=options||0;
-      if(options.toString()!=="[object object]"){
-         return;
-      }
-
-      for(key in options){
+      // options=options||0;
+      // if(options.toString()!=="[object object]"){
+      //    return;
+      // }
+      for(key in options){         
          this.setCss(curEle,key,options[key]);
       }
    }
@@ -320,8 +319,8 @@ var utils=(function(){
          }
          setCss.apply(this,arguments);
       }
-      argTwo=argTwo|0;
-         if(argTwo.toString()=="[object object]"){
+      argTwo=argTwo||0;
+         if(argTwo.toString()=="[object Object]"){
             setGroupCss.apply(this,arguments);
          }
    }
