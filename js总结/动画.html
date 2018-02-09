@@ -5,12 +5,12 @@
     <meta charset="utf-8">
     <style>
 
-    </style>
+</style>
 </head>
 
 <script>
     // 动画实现方式（规定时间）、
-    // 1-》算出步长
+    // 1-》算出步长 
     // 2-》计算出当前运动距离的百分比；
 
     // 动画黄金优化四条法则
@@ -19,13 +19,54 @@
     // 3-》如果需要传参，要想下面这样做，这样避免形成多个栈内存；
     function move(agr) {
         _move();
-        function _move{
-            setTimeout(_move);
+        function _move(){
+            setTimeout(_move,10);
         }   
     }
     // 4-> 保证当前元素在只能同时执行一个动画；
 
-    
+
+    // 回调函数的使用，兼容数组在不同浏览器forEach 和map 方法
+    // -》foEach 和map的区别
+
+    Array.prototype.myForEach=function(callBack,context){
+        context = context || window;
+        if("forEach" in Array.prototype){
+           callBack && this.forEach(callBack,context);
+           return;
+       }
+       for (var i=0;i<tihs.length;i++){
+           callBack && callBack.call(context,this[i],i,this);
+       } 
+       return;
+   }
+
+   Array.prototype.myMap=function(callBack,context){
+        context = context || window;
+        if("forEach" in Array.prototype){
+           return callBack && this.map(callBack,context);
+       }
+
+        if(typeof callBack == "function"){
+            var arr=[];
+            for (var i=0;i<tihs.length;i++){
+                arr[arr.length]=callBack.call(context,this[i],i,this);
+            }
+       return arr;
+       } 
+   }
+
+
+   var obj={
+    "name":"pyc",
+   };
+   var arr=[1,2,3];
+   var res=arr.myMap(function(item,index,input){
+    return item *10;
+   },obj);
+   console.log(res);
+   
+
 </script>
 
 <body>
