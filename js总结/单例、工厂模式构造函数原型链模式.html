@@ -120,8 +120,8 @@
    		for(var i=0; i<arr.length;i++)
    		{
    			var cur = arr[i];
-   			arr[i]<min?min=arr[i]:null;
-   			arr[i]>max?max=arr[i]:null;
+   			cur<min?min=cur:null;
+   			cur>max?max=cur:null;
    		}
    		console.log(min,max);
    	}
@@ -151,7 +151,7 @@
    				}
    			}
    			return arr;
-   		}
+   		},
 
    		//ie6、7下没有JSON对象，json字符串转化为json对象兼容方法；
    		JsonParse:function(jsonString){
